@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tell One — Barry Draper</title>
+<style>
+:root{--navy:#0B2347;--red:#B51F2E;--silver:#C7CBD1;--ink:#1D2430;--muted:#68707D;--paper:#fff;--soft:#F4F5F7}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#eef1f5,#fff 42%);color:var(--ink)}
+.shell{max-width:560px;margin:0 auto;min-height:100vh;background:var(--paper);box-shadow:0 0 40px rgba(11,35,71,.08)}
+header{background:var(--navy);color:#fff;padding:26px 22px 22px;text-align:center;position:sticky;top:0;z-index:5}
+.mark{width:58px;height:58px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;border:7px solid var(--silver);border-top-color:#fff;border-right-color:var(--red);font-size:34px;font-weight:900}
+.brand{font-weight:900;font-size:28px;letter-spacing:.04em}.brand span{color:#ff5866}.tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#e4e8ef;margin-top:5px}
+.progress{display:flex;gap:7px;justify-content:center;margin-top:14px}.dot{width:48px;height:5px;border-radius:999px;background:#53657f}.dot.active{background:#fff}
+main{padding:26px 20px 34px}.screen{display:none}.screen.active{display:block}.eyebrow{color:var(--red);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+h1{font-size:38px;line-height:1.05;margin:0 0 12px;color:var(--navy)}h2{font-size:25px;line-height:1.2;margin:24px 0 8px;color:var(--navy)}
+p{font-size:17px;line-height:1.58;margin:0 0 16px}.lead{font-size:19px;color:#3b4655}.card{background:var(--soft);border:1px solid #e0e3e7;border-radius:18px;padding:18px;margin:18px 0}
+.quote{border-left:5px solid var(--red);padding:14px 16px;background:#fff7f8;border-radius:10px;margin:18px 0;font-size:18px;line-height:1.55}
+.steps{display:grid;gap:12px;margin-top:12px}.step{display:grid;grid-template-columns:42px 1fr;gap:12px;padding:14px;border:1px solid #e2e5e9;border-radius:14px;background:#fff}
+.num{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900}.step b{color:var(--red);display:block;font-size:15px;letter-spacing:.05em;margin-bottom:3px}
+.btn{border:none;width:100%;border-radius:14px;padding:16px 18px;font-size:18px;font-weight:850;cursor:pointer;margin-top:14px;background:var(--red);color:#fff;box-shadow:0 8px 22px rgba(181,31,46,.18)}
+.btn.secondary{background:var(--navy)}.btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none}.small{font-size:13px;color:var(--muted);line-height:1.5}
+.person{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid #e4e6e9;border-radius:16px;padding:14px;margin-bottom:20px}.avatar{width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:19px;font-weight:900}
+.person strong{display:block;color:var(--navy);font-size:17px}.person span{font-size:13px;color:var(--muted)}.church{margin-top:26px;padding:18px;border-radius:16px;background:var(--navy);color:#fff}.church h2{color:#fff;margin-top:0}
+footer{padding:20px;text-align:center;color:var(--muted);font-size:12px;border-top:1px solid #eceef0}
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+<div class="mark">1</div>
+<div class="brand">TELL <span>ONE</span></div>
+<div class="tag">One Person. One Story. One Invitation.</div>
+<div class="progress"><div class="dot active" id="p1"></div><div class="dot" id="p2"></div><div class="dot" id="p3"></div></div>
+</header>
+
+<main>
+<section class="screen active" id="screen1">
+<div class="person"><div class="avatar">BD</div><div><strong>Barry Draper</strong><span>shared this personally with you</span></div></div>
+<div class="eyebrow">My Story</div>
+<h1>Why I believe</h1>
+<p class="lead">I wanted to share something personal with you—not a sermon, and not an argument. Just my story.</p>
+<div class="card">
+<h2>Barry's Story</h2>
+<p>I was attending a Baptist church nine months before I was born! My great-grandfather was a Baptist pastor, and my mother brought that heritage into my life. From my earliest memories, I always loved Jesus.</p><p>But at eleven, some church playmates confronted me about my own sin: candy I had pocketed without paying, disobeying my parents, lying. For the first time, I understood that sin separated me from the Jesus I loved.</p><p>That Sunday afternoon I begged my mother to let me talk to Pastor Foust, who lived just a few doors away. She told me not to disturb him and to wait until church that evening.</p><p><b>I weighed my mother's command against eternity—and decided I would commit one more sin.</b> Off to the pastor's house I went.</p><p>I confessed everything to Pastor Foust—including that I had disobeyed my mother just to come see him. He opened his Bible and lovingly explained, <b>“Barry, this is why Jesus came.”</b> Jesus died to take <b>my</b> sin and rose again to conquer it. Although millions could receive His gift, He did it as if it were <b>JUST FOR ME.</b></p><p>Right there in his living room, in the middle of my latest sin, I bowed my head—and more importantly, my heart—and asked Jesus to forgive me and come live in my heart.</p><p>I had sung “Into My Heart” since preschool. Now I finally understood what it meant personally.</p><p>Through the years Jesus has shown His love to me in more ways than I could tell you here. I hope you'll take the next step and hear His Story. Perhaps it will become your story, too.</p>
+</div>
+<button class="btn" onclick="go(2)">What's Next? →</button>
+</section>
+
+<section class="screen" id="screen2">
+<div class="eyebrow">His Story</div>
+<h1>The story that changed mine</h1>
+<p class="lead">The center of the Christian faith is not what we do for God, but what God has done for us in Jesus Christ.</p>
+<div class="card"><h2>Please, choose a brief video to view.</h2><p><b>Very Short</b> — when you have just a moment.</p><a class="btn" target="_blank" href="https://youtu.be/JB-Yz22b0XY?si=f7749Kff5EsUnV8l">Watch the Very Short Version ▶</a><p style="margin-top:20px"><b>A Little Longer</b> — about 3 minutes.</p><a class="btn secondary" target="_blank" href="https://www.churchfinder.com/gospel-presentation-video">Watch the 3:16 Version ▶</a></div>
+<div class="card">
+<p>God created you, loves you, and desires a relationship with you.</p>
+<p>But sin separates us from God. We cannot remove that separation by being good enough, religious enough, or trying harder.</p>
+<p><strong>Jesus came to earth—God as Man.</strong> He gave His own human life on the Cross, dying for your sin.</p>
+<p>After three days, He arose from death—offering you forgiveness of sin and eternal life.</p>
+<p>That gift is not earned. It is received by faith.</p>
+</div>
+<button class="btn" onclick="go(3)">What's Next? → Your Story</button>
+<button class="btn ghost" onclick="go(1)">← Back to My Story</button>
+</section>
+
+<section class="screen" id="screen3">
+<div class="eyebrow">Your Story</div>
+<h1>What will you do with His invitation?</h1>
+<p class="lead">If you desire to turn to Christ, these simple steps can help you express that decision.</p>
+<div class="steps">
+<div class="step"><div class="num">1</div><div><b>TURN</b>Determine in your heart and mind that you desire to turn to Christ.</div></div>
+<div class="step"><div class="num">2</div><div><b>BELIEVE</b>Believe what the Bible says about Jesus, His death for your sin, and His resurrection.</div></div>
+<div class="step"><div class="num">3</div><div><b>RECEIVE</b>Determine to receive His gift of forgiveness and eternal life, and receive His Spirit into your life.</div></div>
+<div class="step"><div class="num">4</div><div><b>TELL HIM</b>You can tell Him simply:</div></div>
+</div>
+<div class="quote">“Lord Jesus, I believe—and I receive You into my life.”</div>
+<div class="steps">
+<div class="step"><div class="num">5</div><div><b>TELL SOMEONE</b>Tell someone about the decision you have made.</div></div>
+</div>
+<h2>Would you like to tell Barry?</h2>
+<p>Barry shared his story with you. If you would like to tell him about your decision, ask a question, or simply talk, use the button below.</p>
+<a class="btn" style="text-decoration:none;text-align:center;display:block" href="sms:+16785960295?body=Barry%2C%20I%20decided%20to%20follow%20Jesus.">I Decided to Follow Jesus</a><a class="btn secondary" style="text-decoration:none;text-align:center;display:block" href="sms:+16785960295?body=Barry%2C%20I%20have%20questions%20and%20would%20like%20to%20talk.">I Have Questions</a><a class="btn ghost" style="text-decoration:none;text-align:center;display:block" href="tel:+16785960295">Call Barry — 678-596-0295</a>
+<div class="church">
+<h2>You're Invited</h2>
+<p><b>Celebration Baptist Church</b><br>25321 US Hwy 27, Ste 101<br>Leesburg, Florida 34748</p><p>Barry would love to meet you there on Sunday.</p><a class="btn" style="background:#fff;color:#0B2347;box-shadow:none;text-decoration:none;text-align:center;display:block" target="_blank" href="https://www.celebrationbaptistleesburg.com/">Plan a Visit</a>
+</div>
+<button class="btn ghost" onclick="go(2)">← Back to His Story</button>
+</section>
+</main>
+
+<footer><strong>TellOne.app</strong><br>My Story • His Story • Your Story</footer>
+</div>
+<script>
+function go(n){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen'+n).classList.add('active');
+  for(let i=1;i<=3;i++) document.getElementById('p'+i).classList.toggle('active',i===n);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
