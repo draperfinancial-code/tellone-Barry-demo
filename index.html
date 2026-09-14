@@ -1,666 +1,172 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tell One — Barry Draper</title>
-  <meta name="description" content="Barry Draper's Tell One story: My Story, His Story, Your Story.">
-  <meta name="theme-color" content="#0B2347">
-
-  <style>
-    :root{
-      --navy:#0B2347;
-      --red:#B51F2E;
-      --silver:#C7CBD1;
-      --ink:#1D2430;
-      --muted:#68707D;
-      --paper:#ffffff;
-      --soft:#F4F5F7;
-    }
-
-    *{box-sizing:border-box}
-
-    html{scroll-behavior:smooth}
-
-    body{
-      margin:0;
-      font-family:Arial,Helvetica,sans-serif;
-      background:linear-gradient(180deg,#eef1f5,#ffffff 45%);
-      color:var(--ink);
-    }
-
-    .shell{
-      max-width:560px;
-      margin:0 auto;
-      min-height:100vh;
-      background:var(--paper);
-      box-shadow:0 0 40px rgba(11,35,71,.08);
-    }
-
-    header{
-      background:var(--navy);
-      color:#fff;
-      padding:26px 22px 22px;
-      text-align:center;
-      position:sticky;
-      top:0;
-      z-index:5;
-    }
-
-    .mark{
-      width:58px;
-      height:58px;
-      margin:0 auto 10px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      border:7px solid var(--silver);
-      border-right-color:var(--red);
-      border-top-color:#fff;
-      font-size:31px;
-      font-weight:900;
-    }
-
-    .brand{
-      font-weight:900;
-      font-size:28px;
-      letter-spacing:.04em;
-    }
-
-    .brand span{color:#ff5866}
-
-    .tag{
-      font-size:12px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      margin-top:5px;
-      color:#e9edf2;
-    }
-
-    .progress{
-      display:flex;
-      gap:7px;
-      justify-content:center;
-      margin-top:14px;
-    }
-
-    .dot{
-      width:48px;
-      height:5px;
-      border-radius:999px;
-      background:#415677;
-    }
-
-    .dot.active{background:#fff}
-
-    main{
-      padding:26px 20px 34px;
-    }
-
-    .screen{
-      display:none;
-    }
-
-    .screen.active{
-      display:block;
-    }
-
-    .eyebrow{
-      color:var(--red);
-      font-weight:800;
-      font-size:13px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-
-    h1{
-      font-size:38px;
-      line-height:1.05;
-      margin:8px 0 12px;
-      color:var(--navy);
-    }
-
-    h2{
-      font-size:25px;
-      line-height:1.2;
-      margin:24px 0 8px;
-      color:var(--navy);
-    }
-
-    p{
-      font-size:17px;
-      line-height:1.58;
-      margin:0 0 16px;
-    }
-
-    .lead{
-      font-size:19px;
-      color:#3b4655;
-    }
-
-    .card{
-      background:var(--soft);
-      border:1px solid #e2e6ea;
-      border-radius:16px;
-      padding:18px;
-      margin:18px 0;
-    }
-
-    .quote{
-      border-left:5px solid var(--red);
-      background:#fff7f8;
-      padding:14px 16px;
-      border-radius:10px;
-      margin:18px 0;
-      font-size:18px;
-      line-height:1.55;
-    }
-
-    .btn{
-      display:block;
-      width:100%;
-      border:none;
-      border-radius:14px;
-      padding:16px 18px;
-      margin-top:13px;
-      font-size:18px;
-      font-weight:850;
-      cursor:pointer;
-      text-align:center;
-      text-decoration:none;
-      background:var(--red);
-      color:#fff;
-    }
-
-    .btn.secondary{
-      background:var(--navy);
-    }
-
-    .btn.ghost{
-      background:#fff;
-      color:var(--navy);
-      border:2px solid var(--navy);
-    }
-
-    .video-choice{
-      border:1px solid #e1e5e9;
-      border-radius:16px;
-      overflow:hidden;
-      margin:16px 0 22px;
-      background:#fff;
-      box-shadow:0 6px 18px rgba(11,35,71,.05);
-    }
-
-    .video-head{
-      padding:16px 16px 12px;
-    }
-
-    .video-head strong{
-      display:block;
-      color:var(--navy);
-      font-size:20px;
-      margin-bottom:4px;
-    }
-
-    .video-head span{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .video-wrap{
-      position:relative;
-      padding-bottom:56.25%;
-      height:0;
-      background:#000;
-      overflow:hidden;
-    }
-
-    .video-wrap iframe{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border:0;
-    }
-
-    .steps{
-      display:grid;
-      gap:12px;
-      margin:10px 0 18px;
-    }
-
-    .step{
-      display:grid;
-      grid-template-columns:42px 1fr;
-      gap:12px;
-      align-items:start;
-      border:1px solid #e1e5e9;
-      border-radius:14px;
-      padding:14px;
-      background:#fff;
-    }
-
-    .num{
-      width:36px;
-      height:36px;
-      border-radius:50%;
-      background:var(--navy);
-      color:#fff;
-      display:grid;
-      place-items:center;
-      font-weight:900;
-    }
-
-    .step b{
-      color:var(--red);
-      display:block;
-      margin-bottom:3px;
-    }
-
-    .church{
-      background:var(--navy);
-      color:#fff;
-      border-radius:17px;
-      padding:19px;
-      margin-top:26px;
-    }
-
-    .church h2{
-      color:#fff;
-      margin-top:0;
-    }
-
-    .church .btn{
-      background:#fff;
-      color:var(--navy);
-    }
-
-    footer{
-      text-align:center;
-      padding:20px;
-      border-top:1px solid #e7eaee;
-      color:#6b7380;
-      font-size:12px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07182d">
+  <meta name="description" content="A Catholic Operation Christmas Share demonstration from Tell One.">
+  <title>Come and See | Catholic Operation Christmas Share</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>undefined</style>
+  <style>.song-card{gap:10px;padding:9px}.cover{width:50px;height:50px;object-fit:cover;border-radius:10px}.play{width:38px;height:38px;flex:0 0 38px;font-size:13px}.song-card strong{font-size:18px}.song-card span{font-size:9px}
+.lyrics-button{margin:0 auto 13px;display:block;border:0;background:transparent;color:#f2cf78;font:600 11px Inter;letter-spacing:.04em;cursor:pointer}.lyrics-panel{max-height:42vh;overflow:auto;margin:0 0 14px;padding:18px;background:#07182df2;border:1px solid #d7a83e66;border-radius:14px;color:#f7f1e7;box-shadow:0 10px 30px #0006}.lyrics-panel[hidden]{display:none}.lyrics-panel h3{font:600 25px 'Cormorant Garamond';color:#f2cf78;margin:0 0 14px}.lyrics-panel h4{font:700 9px Inter;text-transform:uppercase;letter-spacing:.16em;color:#d7a83e;margin:17px 0 6px}.lyrics-panel p{font:500 14px/1.55 'Cormorant Garamond';margin:0;color:#f6f0e7}
+</style>
 </head>
-
 <body>
-<div class="shell">
+  <main class="shell" aria-live="polite">
+    <header class="topbar">
+      <button class="brand" data-go="0" aria-label="Return to the beginning">
+        <span class="brand-mark">✦</span>
+        <span><strong>Tell One</strong><small>Catholic Christmas Experience</small></span>
+      </button>
+      <span class="demo-pill">DEMONSTRATION</span>
+    </header>
 
-  <header>
-    <div class="mark">1</div>
-    <div class="brand">TELL <span>ONE</span></div>
-    <div class="tag">One Person. One Story. One Invitation.</div>
-
-    <div class="progress">
-      <div id="d1" class="dot active"></div>
-      <div id="d2" class="dot"></div>
-      <div id="d3" class="dot"></div>
+    <div class="progress-wrap" aria-label="Experience progress">
+      <div id="progress" class="progress"></div>
     </div>
-  </header>
 
-  <main>
-
-    <!-- MY STORY -->
-    <section id="s1" class="screen active">
-
-      <div class="eyebrow">My Story</div>
-
-      <h1>How Jesus became personal to me</h1>
-
-      <p class="lead">
-        I was attending a Baptist church nine months before I was born!
-        My great-grandfather was a Baptist pastor, and my mother brought
-        that heritage into my life. From my earliest memories, I always
-        loved Jesus.
-      </p>
-
-      <p>
-        But when I was eleven, some playmates—kids I went to church with—
-        confronted me about something I had never really faced:
-        <b>my own sin.</b>
-      </p>
-
-      <p>
-        There was candy I had pocketed without paying for it. I had ridden
-        my bicycle to the convenience store without my parents' permission.
-        I had lied. And my friends reminded me of what the revival evangelist
-        had preached about sin and eternity.
-      </p>
-
-      <p>
-        That was a heavy conversation for an eleven-year-old. But deep down,
-        for the first time, I knew they were right. I realized I had a problem
-        separating me from the Jesus I had always loved. That problem was sin.
-      </p>
-
-      <p>
-        It was Sunday afternoon. Our pastor, Pastor Foust, lived in the church
-        pastorium just a few doors away. Upset, I begged my mother to let me
-        go talk to him.
-      </p>
-
-      <div class="quote">
-        “Barry, it's Sunday. We'll be back at church in a few hours.
-        Don't you dare go down there and disturb him right now!”
+    <section class="screen active hero" data-screen="0">
+      <img src="https://tellone-catholic-ocs-complete.vercel.app/assets/nativity-radiant.webp" alt="Mary and Joseph beside the Christ Child under the star of Bethlehem">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">A CHRISTMAS GIFT FROM BARRY</p>
+        <h1>May I share a new<br>Christmas song with you?</h1>
+        <p class="lead">A song of light, hope and the love that came near.</p>
+        
+        <div class="video-choice" style="margin:10px 0 14px;border:1px solid #ffffff55;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 12px 35px #0005">
+          <div class="video-wrap" style="position:relative;padding-bottom:56.25%;height:0;background:#000">
+            <iframe src="https://www.youtube-nocookie.com/embed/c4gU9eAOht0?rel=0"
+              title="Radiant Beams V3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+              style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+          </div>
+        </div>
+        <p class="asset-note">Watch the complete Radiant Beams video.</p>
+        <button id="lyricsButton" class="lyrics-button" aria-expanded="false" aria-controls="lyricsPanel">Read the lyrics <span>⌄</span></button>
+        <div id="lyricsPanel" class="lyrics-panel" hidden>
+          <h3>Radiant Beams</h3>
+          <h4>Verse 1</h4>
+          <p>Mary stood by the straw,<br>Hands still from the birth.<br>A little barn in Bethlehem,<br>The hush of holy earth.<br>She looked up at the star above,<br>Then back down where He lay,<br>And saw the light come pouring in<br>Like dawn on Christmas Day.</p>
+          <h4>Chorus</h4>
+          <p>Radiant beams, radiant beams<br>Falling soft and true<br>Radiant beams, radiant beams<br>Shining on us through<br>On the manger, on the wood,<br>On the child so small and good<br>Radiant beams, radiant beams<br>The promise coming through</p>
+          <h4>Verse 2</h4>
+          <p>The beams ran through the rafters,<br>Lit the rough-hewn stall,<br>And Mary saw a shadow line<br>Stretch long across it all.<br>It crossed the manger cradle,<br>Dark and thin and plain,<br>Like the shape of sorrow waiting<br>In the mercy of His name.</p>
+          <h4>Bridge</h4>
+          <p>She held Him close and trembling,<br>Knew the joy and ache<br>That love would one day carry Him<br>To what He came to take.<br>Still the star kept shining,<br>Still the stable glowed,<br>And grace lay bright in baby eyes<br>Where the whole wide world would know.</p>
+          <h4>Ending</h4>
+          <p>Radiant beams, radiant beams<br>Over me and you<br>From the manger to the cross beam<br>Love was shining through</p>
+        </div>
+        <button class="primary" data-next>Discover the story behind the song <span>→</span></button>
       </div>
-
-      <p>
-        I weighed my mother's command against the prospect of eternity in hell—
-        and decided I would commit <i>one more sin.</i> Off to the pastor's
-        house I went.
-      </p>
-
-      <p>
-        Pastor Foust welcomed me in. I told him everything:
-        “Pastor, I've stolen things. I've been a liar. Why, I disobeyed my
-        mother just to come down here and talk with you.”
-      </p>
-
-      <p>
-        He lovingly picked up a Bible and explained:
-      </p>
-
-      <div class="quote">
-        <b>“Barry, this is why Jesus came.”</b><br><br>
-        Jesus chose to die on the Cross to take <b>your</b> sin.
-        He rose again to conquer sin on your behalf. And although millions
-        could receive this gift, He did it as if it were
-        <b>JUST FOR YOU.</b>
-      </div>
-
-      <p>
-        I understood. Right there in my pastor's living room—in the middle
-        of my latest sin—I bowed my head, and more importantly my heart,
-        and asked Jesus to forgive my sin and come live in my heart.
-      </p>
-
-      <p>
-        Even as a preschooler I had sung, “Into my heart… come into my heart,
-        Lord Jesus.” But now I understood what those words meant personally.
-        My sin separated me from the Jesus I loved—and Jesus had done everything
-        necessary to bring me to Him.
-      </p>
-
-      <p>
-        Through the years, Jesus has demonstrated His love to me in more ways
-        than I could possibly tell you here.
-      </p>
-
-      <p>
-        <b>
-          I hope you'll take the next step and hear His Story.
-          Perhaps it will become your story, too.
-        </b>
-      </p>
-
-      <button class="btn" onclick="go(2)">
-        What's Next? → His Story
-      </button>
-
     </section>
 
-
-    <!-- HIS STORY -->
-    <section id="s2" class="screen">
-
-      <div class="eyebrow">His Story</div>
-
-      <h1>The story that changed mine</h1>
-
-      <p class="lead">
-        The center of the Christian faith is not what we do for God,
-        but what God has done for us in Jesus Christ.
-      </p>
-
-      <h2>Please, choose a brief video to view.</h2>
-
-      <div class="video-choice">
-
-        <div class="video-head">
-          <strong>Option 1 — Very Short</strong>
-          <span>One Minute Gospel with Greg Laurie.</span>
-        </div>
-
-        <div class="video-wrap">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/JB-Yz22b0XY?rel=0"
-            title="One Minute Gospel with Greg Laurie"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-      </div>
-
-
-      <div class="video-choice">
-
-        <div class="video-head">
-          <strong>Option 2 — A Little Longer</strong>
-          <span>A brief Gospel presentation.</span>
-        </div>
-
-        <div class="video-wrap">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/ZwcqujK0Zno?rel=0"
-            title="Brief Gospel presentation"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <p>
-          God created you, loves you, and desires a relationship with you.
-        </p>
-
-        <p>
-          But sin separates us from God. We cannot remove that separation
-          by being good enough, religious enough, or trying harder.
-        </p>
-
-        <p>
-          <b>Jesus came to earth—God as Man.</b>
-          He gave His own human life on the Cross, dying for your sin.
-        </p>
-
-        <p>
-          After three days, He arose from death—offering you forgiveness
-          of sin and eternal life.
-        </p>
-
-        <p>
-          <b>That gift is not earned. It is received by faith.</b>
-        </p>
-
-      </div>
-
-      <button class="btn" onclick="go(3)">
-        What's Next? → Your Story
-      </button>
-
-      <button class="btn ghost" onclick="go(1)">
-        ← My Story
-      </button>
-
+    <section class="screen story" data-screen="1">
+      <div class="ornament">✦</div>
+      <p class="eyebrow gold">THE LIGHT OF CHRISTMAS</p>
+      <h2>God came to dwell<br>among us.</h2>
+      <blockquote>“The light shines in the darkness, and the darkness has not overcome it.” <cite>John 1:5</cite></blockquote>
+      <p>At Christmas, Catholics celebrate more than the birth of a remarkable child. We celebrate the mystery that God came near. Jesus Christ—truly God and truly man—entered our world in humility, born of the Virgin Mary and laid in a manger.</p>
+      <p>He came to reveal the Father’s love, forgive sin and open the way to eternal life. The wood of the manger points toward the wood of the Cross—but the Cross was not the end. Jesus rose, and His light still shines.</p>
+      <button class="primary" data-next>What does this mean for me? <span>→</span></button>
+      <button class="text-button" data-back>← Back</button>
     </section>
 
-
-    <!-- YOUR STORY -->
-    <section id="s3" class="screen">
-
-      <div class="eyebrow">Your Story</div>
-
-      <h1>What will you do with His invitation?</h1>
-
-      <p class="lead">
-        If you desire to turn to Christ, you can respond simply and personally.
-      </p>
-
-
-      <div class="steps">
-
-        <div class="step">
-          <div class="num">1</div>
-          <div>
-            <b>TURN</b>
-            Determine in your heart and mind that you desire to turn to Christ.
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="num">2</div>
-          <div>
-            <b>BELIEVE</b>
-            Believe what the Bible says: Jesus came to earth—God as Man.
-            He gave His human life on the Cross for your sin and rose again
-            after three days.
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="num">3</div>
-          <div>
-            <b>RECEIVE</b>
-            Receive His gift of forgiveness and eternal life,
-            and receive His Spirit into your life.
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="num">4</div>
-          <div>
-            <b>TELL HIM</b>
-            Simply tell Him what you believe.
-          </div>
-        </div>
-
+    <section class="screen invitation" data-screen="2">
+      <p class="eyebrow gold">COME AND SEE</p>
+      <h2>You don’t need to have<br>all the answers.</h2>
+      <p class="lead dark">Jesus invites you to open your heart to His grace and take one honest next step toward Him.</p>
+      <div class="prayer">
+        <span>Jesus, I want to know You.</span>
+        <p>Open my heart to Your love and truth. Forgive me, guide me and help me take my next step toward You. Amen.</p>
       </div>
-
-
-      <div class="quote">
-        “Lord Jesus, I believe—and I receive You into my life.”
+      <p class="question">Where are you today?</p>
+      <div class="choice-grid">
+        <button data-choice="curious">I’m curious about the Catholic faith <span>→</span></button>
+        <button data-choice="returning">I’m Catholic, but I’ve been away <span>→</span></button>
+        <button data-choice="mass">I’d like to visit Mass <span>→</span></button>
       </div>
-
-
-      <div class="steps">
-
-        <div class="step">
-          <div class="num">5</div>
-          <div>
-            <b>TELL SOMEONE</b>
-            Start by telling the person who shared Tell One with you.
-          </div>
-        </div>
-
-      </div>
-
-
-      <h2>Tell Barry</h2>
-
-      <a
-        class="btn"
-        href="sms:+16785960295?body=Barry%2C%20I%20decided%20to%20follow%20Jesus."
-      >
-        I Decided to Follow Jesus
-      </a>
-
-      <a
-        class="btn secondary"
-        href="sms:+16785960295?body=Barry%2C%20I%20have%20questions%20and%20would%20like%20to%20talk."
-      >
-        I Have Questions
-      </a>
-
-      <a
-        class="btn ghost"
-        href="tel:+16785960295"
-      >
-        Call Barry — 678-596-0295
-      </a>
-
-
-      <div class="church">
-
-        <h2>Plan a Church Visit</h2>
-
-        <p>
-          <b>Celebration Baptist Church</b><br>
-          25321 US Hwy 27, Ste 101<br>
-          Leesburg, Florida 34748
-        </p>
-
-        <p>
-          Barry would love to meet you there on Sunday.
-        </p>
-
-        <a
-          class="btn"
-          href="https://www.celebrationbaptistleesburg.com/"
-          target="_blank"
-          rel="noopener"
-        >
-          Visit Celebration Baptist Church
-        </a>
-
-      </div>
-
-
-      <button class="btn ghost" onclick="go(2)">
-        ← His Story
-      </button>
-
+      <button class="text-button" data-back>← Back</button>
     </section>
 
+    <section class="screen parish" data-screen="3">
+      <div class="church-silhouette" aria-hidden="true">♰</div>
+      <p class="eyebrow gold">A PERSONAL INVITATION</p>
+      <h2>Barry invited you to<br>Christmas Mass.</h2>
+      <p class="lead dark">You are warmly invited to celebrate the hope and peace of Christmas with us.</p>
+      <article class="parish-card">
+        <div class="parish-head">
+          <span class="crest">BS</span>
+          <div><small>CLERMONT, FLORIDA</small><h3>Blessed Sacrament Catholic Church</h3><p>Clermont, Florida</p></div>
+        </div>
+        <div class="mass-list">
+   <h4>Christmas Mass Schedule</h4>
+   <p><strong>2026</strong> Christmas Eve and Christmas Day Mass times will be added when published by the parish.</p>
+ </div>
+ <p class="address">720 12th Street · Clermont, Florida 34711<br>Pastor: Rev. Mark Wajda</p>
+      </article>
+      <div class="button-row">
+        <button class="secondary" id="calendarButton">＋ Add to calendar</button>
+        <button class="primary compact" data-next>I’ll meet you there <span>→</span></button>
+      </div>
+      <button class="text-button" data-back>← Back</button>
+    </section>
+
+    <section class="screen expect" data-screen="4">
+      <p class="eyebrow gold">YOUR FIRST VISIT</p>
+      <h2>What should I expect<br>at Mass?</h2>
+      <p class="lead dark">You are genuinely welcome. No one expects a first-time guest to know every prayer, response or gesture.</p>
+      <div class="expect-list">
+        <article><span>01</span><div><h3>Come as you are</h3><p>Respectful, ordinary clothing is perfectly appropriate. Arrive a little early and an usher can help you find a seat.</p></div></article>
+        <article><span>02</span><div><h3>Simply follow along</h3><p>The congregation will stand, sit and kneel at different times. Participate as you feel comfortable.</p></div></article>
+        <article><span>03</span><div><h3>Word and Eucharist</h3><p>Mass includes Scripture, a homily, prayer and the Liturgy of the Eucharist. It ordinarily lasts about an hour.</p></div></article>
+        <article><span>04</span><div><h3>About Holy Communion</h3><p>Guests who are not receiving Holy Communion are welcome to remain in the pew and pray. Please follow the parish’s guidance.</p></div></article>
+      </div>
+      <button class="primary" data-next>Continue the journey <span>→</span></button>
+      <button class="text-button" data-back>← Back</button>
+    </section>
+
+    <section class="screen finish" data-screen="5">
+      <div class="ornament">✦</div>
+      <p class="eyebrow gold">YOUR NEXT STEP</p>
+      <h2>The invitation doesn’t<br>end at Christmas.</h2>
+      <p id="finishMessage" class="lead dark">Wherever you are in your journey, Blessed Sacrament would be honored to walk with you.</p>
+      <div class="next-grid">
+        <button><span>Talk with someone</span><small>Meet a priest or parish guide</small></button>
+        <button><span>Returning Catholic</span><small>Receive a warm, confidential welcome</small></button>
+        <button><span>Explore the faith</span><small>Learn about OCIA with no pressure</small></button>
+        <button><span>Visit again</span><small>See regular Mass times</small></button>
+      </div>
+      <div class="closing">
+        <span>Shared by Barry</span>
+        <strong>Come and see.</strong>
+        <small>Operation Christmas Share · Powered by Tell One</small>
+      </div>
+      <button class="secondary full" data-go="0">Experience it again</button>
+      <button class="text-button" data-back>← Back</button>
+    </section>
   </main>
-
-
-  <footer>
-    <b>TellOne.app</b><br>
-    My Story • His Story • Your Story
-  </footer>
-
-</div>
-
-
+  <div id="toast" class="toast" role="status"></div>
+  
 <script>
-  function go(n){
-
-    document
-      .querySelectorAll('.screen')
-      .forEach(function(el){
-        el.classList.remove('active');
-      });
-
-    document
-      .querySelectorAll('.dot')
-      .forEach(function(el){
-        el.classList.remove('active');
-      });
-
-    document
-      .getElementById('s' + n)
-      .classList.add('active');
-
-    document
-      .getElementById('d' + n)
-      .classList.add('active');
-
-    window.scrollTo({
-      top:0,
-      behavior:'smooth'
-    });
-
-  }
-</script>
-
-</body>
+const screens=[...document.querySelectorAll('.screen')];
+const progress=document.getElementById('progress');
+const toast=document.getElementById('toast');
+let current=0, choice='';
+function go(index){current=Math.max(0,Math.min(index,screens.length-1));screens.forEach((s,i)=>s.classList.toggle('active',i===current));progress.style.width=`${((current+1)/screens.length)*100}%`;window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>go(current+1)));
+document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>go(current-1)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(Number(b.dataset.go))));
+document.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>{choice=b.dataset.choice;const messages={
+curious:'You are welcome to explore, ask questions and discover what Catholics believe—without pressure.',
+returning:'Coming home can begin with one simple step. Blessed Sacrament would be honored to welcome you back.',
+mass:'Your place is ready. Come experience the beauty, hope and peace of Christmas Mass.'
+};document.getElementById('finishMessage').textContent=messages[choice];go(3);}));
+const lyricsButton=document.getElementById('lyricsButton');
+if(lyricsButton){lyricsButton.addEventListener('click',event=>{const panel=document.getElementById('lyricsPanel');const opening=panel.hidden;panel.hidden=!opening;event.currentTarget.setAttribute('aria-expanded',String(opening));event.currentTarget.firstChild.textContent=opening?'Hide the lyrics ':'Read the lyrics ';});}
+const cal=document.getElementById('calendarButton'); if(cal) cal.addEventListener('click',()=>showToast('Christmas Mass times will be added when Blessed Sacrament publishes the 2026 schedule.'));
+function showToast(message){toast.textContent=message;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2400);}
+go(0);</script></body>
 </html>
