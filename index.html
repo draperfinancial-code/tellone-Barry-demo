@@ -13,7 +13,26 @@
   <style>.song-card{gap:10px;padding:9px}.cover{width:50px;height:50px;object-fit:cover;border-radius:10px}.play{width:38px;height:38px;flex:0 0 38px;font-size:13px}.song-card strong{font-size:18px}.song-card span{font-size:9px}
 .lyrics-button{margin:0 auto 13px;display:block;border:0;background:transparent;color:#f2cf78;font:600 11px Inter;letter-spacing:.04em;cursor:pointer}.lyrics-panel{max-height:42vh;overflow:auto;margin:0 0 14px;padding:18px;background:#07182df2;border:1px solid #d7a83e66;border-radius:14px;color:#f7f1e7;box-shadow:0 10px 30px #0006}.lyrics-panel[hidden]{display:none}.lyrics-panel h3{font:600 25px 'Cormorant Garamond';color:#f2cf78;margin:0 0 14px}.lyrics-panel h4{font:700 9px Inter;text-transform:uppercase;letter-spacing:.16em;color:#d7a83e;margin:17px 0 6px}.lyrics-panel p{font:500 14px/1.55 'Cormorant Garamond';margin:0;color:#f6f0e7}
 </style>
-</head>
+<style>
+html,body{margin:0!important;padding:0!important;background:#d7d8da!important}
+body{font-family:Inter,Arial,sans-serif!important}
+.shell{width:min(100%,520px)!important;min-height:100vh!important;margin:0 auto!important;background:#fbf7ef!important;overflow:hidden!important;box-shadow:0 0 55px #0002!important}
+.topbar{display:flex!important;height:74px!important;padding:12px 18px!important;align-items:center!important;justify-content:space-between!important;background:#07182d!important}
+.progress-wrap{display:block!important;height:3px!important;background:#d7dbe0!important}.progress{display:block!important;height:100%!important;background:linear-gradient(90deg,#701d2e,#d7a83e)!important}
+.screen{display:none!important;min-height:calc(100vh - 77px)!important;padding:54px 30px 38px!important;box-sizing:border-box!important;color:#182333!important}.screen.active{display:block!important}
+.hero.screen{padding:0!important;position:relative!important;color:white!important;min-height:calc(100vh - 77px)!important}
+.hero>img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+.hero-shade{position:absolute!important;inset:0!important;background:linear-gradient(180deg,#06172aaa 0%,#06172a33 32%,#06172a55 56%,#06172af2 91%)!important}
+.hero-content{position:relative!important;z-index:2!important;min-height:calc(100vh - 77px)!important;padding:11vh 26px 32px!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important}
+.hero h1{font-family:Georgia,serif!important;font-size:clamp(39px,10vw,54px)!important;line-height:.95!important;margin:0 0 18px!important;color:white!important}
+.lead{font-family:Georgia,serif!important;font-size:17px!important;line-height:1.55!important;color:#f1eadf!important;margin:0 0 18px!important}
+.video-choice{width:100%!important;max-width:100%!important;margin:8px 0 12px!important}.video-wrap{width:100%!important}
+.video-wrap iframe{display:block!important;width:100%!important;height:100%!important}
+.asset-note{color:#d2d8df!important;text-align:center!important;font-size:10px!important}
+.lyrics-button{color:#f2cf78!important}
+.primary{width:100%!important;box-sizing:border-box!important;background:linear-gradient(135deg,#8f2438,#701d2e)!important;color:white!important;border:0!important;border-radius:12px!important;padding:15px 17px!important;font-weight:700!important}
+@media(max-width:560px){.shell{width:100%!important}.hero-content{padding:7vh 22px 26px!important}}
+</style></head>
 <body>
   <main class="shell" aria-live="polite">
     <header class="topbar">
